@@ -10,6 +10,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log("用户临时登录凭证：", res);
       }
     })
     // 获取用户信息
@@ -32,6 +33,9 @@ App({
         }
       }
     })
+  },
+  onShow: function(options) {
+    console.log("场景值：", options);
   },
   globalData: {
     userInfo: null
