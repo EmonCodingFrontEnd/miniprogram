@@ -11,3 +11,5 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+<button bindtap='getData'>{{serverData}}</button>
+<button bindtap='copy'>{{copyData}}</button>

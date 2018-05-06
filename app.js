@@ -49,6 +49,8 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    hostssl: 'https://exp.mynatapp.cc',
+    host: 'http://exp.mynatapp.cc'
   }
 })

@@ -7,7 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    serverData: '点击获取内容',
+    copyData: '点击复制内容'
   },
   //事件处理函数
   bindViewTap: function () {
@@ -16,8 +18,47 @@ Page({
      * 需要跳转的应用内非 tabBar 的页面的路径 , 路径后可以带参数
      */
     wx.navigateTo({
-      url: '../test/test'
+      url: '../test/test?title="我来自首页"'
     })
+  },
+  getData: function () {
+    var $this = this;
+    wx.request({
+      url: app.globalData.hostssl + '/wechat/mini/message',
+      method: 'GET',
+      data: {
+        name: '李明',
+        age: 31
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res);
+        $this.setData({ serverData: res.data });
+      }
+    })
+  },
+  copy: function () {
+    var $this = this;
+    if (wx.setClipboardData) {
+      wx.setClipboardData({
+        data: '想要复制的内容',
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              console.log(res);
+              $this.setData({ copyData: res.data });
+            }
+          })
+        }
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前版本过低，请及时升级',
+      })
+    }
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -34,7 +75,7 @@ Page({
           hasUserInfo: true
         })
       }
-    } else {  
+    } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
