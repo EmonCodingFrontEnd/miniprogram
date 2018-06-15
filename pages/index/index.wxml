@@ -13,3 +13,4 @@
 </view>
 <button bindtap='getData'>{{serverData}}</button>
 <button bindtap='copy'>{{copyData}}</button>
+<web-view src="https://exp.mynatapp.cc/wechat/http/readByUrl?urlStr=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzI0MDQ4MTM5NQ%3D%3D%26mid%3D2247485699%26idx%3D1%26sn%3Dd57f95d13b26d3a5cfaa8a42197c6140%26chksm%3De91b6c1fde6ce50915bbc4666da68f9fa491667d6fdc507411e9f05e78514152d580d095c307%26mpshare%3D1%26scene%3D1%26srcid%3D0511o4uhfWv5GdnDhuDlFvWJ"></web-view>
